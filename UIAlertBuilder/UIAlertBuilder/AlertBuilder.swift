@@ -63,9 +63,14 @@ class AlertBuilder: NSObject {
                 for action in actions {
                     alertController.addAction(action)
                 }
-            } else {
+            }
+            if let cancel = self.cancelAction {
+                alertController.addAction(cancel)
+            }
+            else {
                 alertController.addAction(UIAlertAction(title: "취소", style: .cancel))
             }
+            
         case .alert:
             if let proceed = self.proceedAction, let cancel = self.cancelAction {
                 alertController.addAction(cancel)
